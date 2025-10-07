@@ -14,10 +14,8 @@
   </body>
   <script src="https://cdn.jsdelivr.net/npm/fingerprintjs2@2.1.4/fingerprint2.js"></script>
   <script type="module">
-    const fpjs2 = new Fingerprint2();
-
     const getFingerprint = async () => {
-      fpjs2.get((result) => {
+      Fingerprint2().get((result) => {
         console.log('Fingerprint result:', result)
         const fp = document.createElement('p');
         fp.id = 'fingerprint';
