@@ -15,11 +15,11 @@
   <script src="https://cdn.jsdelivr.net/npm/fingerprintjs2@2.1.4/fingerprint2.js"></script>
   <script type="module">
     const getFingerprint = async () => {
-      Fingerprint2().get((result) => {
-        console.log('Fingerprint result:', result)
+      Fingerprint2.get((result) => {
+        const fpresult = Fingerprint2.x64hash128(result.map(i => i.value).join(''), 31);
         const fp = document.createElement('p');
         fp.id = 'fingerprint';
-        fp.textContent = result;
+        fp.textContent = fpresult;
         document.getElementById('container').appendChild(fp);
       });
     };
