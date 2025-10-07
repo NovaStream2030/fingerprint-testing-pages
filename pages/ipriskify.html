@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPRiskify test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>IPRiskify test</h1>
+      <button id="get-fingerprint">Get my fingerprint</button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@ipriskify/fingerprintx/dist/ipriskify.min.js"></script>
+  <script type="module">
+    const getFingerprint = async () => {
+      IPRiskify.load()
+        .then(fp => fp.get())
+        .then(result => {
+          console.log('Fingerprint result:', result)
+          const fp = document.createElement('p');
+          fp.id = 'fingerprint';
+          fp.textContent = result.analysis.fingerprint;
+          document.getElementById('container').appendChild(fp);
+        })
+    };
+
+    document.getElementById('get-fingerprint').addEventListener('click', getFingerprint);
+  </script>
+</html>

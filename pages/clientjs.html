@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientJS test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>ClientJS test</h1>
+      <button id="get-fingerprint">Get my fingerprint</button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/clientjs@0.2.1/dist/client.min.js"></script>
+  <script type="module">
+    const client = new ClientJS();
+
+    const getFingerprint = async () => {
+      const result = await client.getFingerprint();
+      console.log('Fingerprint result:', result)
+      const fp = document.createElement('p');
+      fp.id = 'fingerprint';
+      fp.textContent = result;
+      document.getElementById('container').appendChild(fp);
+    };
+
+    document.getElementById('get-fingerprint').addEventListener('click', getFingerprint);
+  </script>
+</html>

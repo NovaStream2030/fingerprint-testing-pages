@@ -1,0 +1,11 @@
+{
+  "name": "fingerprint-testing-pages",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "http-server ./pages"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FingerprintJS2 test</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <h1>FingerprintJS2 test</h1>
+      <button id="get-fingerprint">Get my fingerprint</button>
+    </div>
+  </body>
+  <script src="fingerprint2.js"></script>
+  <script type="module">
+    const fpjs2 = new Fingerprint2();
+
+    const getFingerprint = async () => {
+      fpjs2.get((result) => {
+        console.log('Fingerprint result:', result)
+        const fp = document.createElement('p');
+        fp.id = 'fingerprint';
+        fp.textContent = result;
+        document.getElementById('container').appendChild(fp);
+      });
+    };
+
+    document.getElementById('get-fingerprint').addEventListener('click', getFingerprint);
+  </script>
+</html>
